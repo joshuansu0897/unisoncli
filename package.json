@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "unisoncli": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joshuansu0897/unisoncli.git"
@@ -25,6 +28,7 @@
     "commander": "^2.20.0",
     "configstore": "^4.0.0",
     "figlet": "^1.2.1",
-    "inquirer": "^6.3.1"
+    "inquirer": "^6.3.1",
+    "validator": "^10.11.0"
   }
 }
