@@ -1,16 +1,24 @@
 'use strict'
-const figlet = require('figlet')
-const inquirer = require('inquirer')
 const commander = require('commander')
-
 const actions = require('./src/actions')
 
-const program = new commander.Command()
-program.version('0.0.1')
+const cli = new commander.Command()
 
-program
+cli.version(actions.version)
+
+cli
   .command('login')
   .description('Iniciar sesión en el portal de Alumnos.')
   .action(actions.login)
 
-program.parse(process.argv)
+cli
+  .command('calificaciones [ciclo]')
+  .description('Muestra la calidicacion del ciclo')
+  .action(actions.calificaciones)
+  
+cli
+  .command('cal [ciclo]')
+  .description('Alias para calificaciones')
+  .action(actions.calificaciones)
+
+cli.parse(process.argv)
