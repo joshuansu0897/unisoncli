@@ -1,0 +1,23 @@
+{
+  "name": "unisoncli",
+  "version": "1.0.0",
+  "description": "Cli para consutlar recursos de la Unison",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuansu0897/unisoncli.git"
+  },
+  "keywords": [
+    "cli",
+    "unison"
+  ],
+  "author": "joshua saucedo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshuansu0897/unisoncli/issues"
+  },
+  "homepage": "https://github.com/joshuansu0897/unisoncli#readme"
+}
