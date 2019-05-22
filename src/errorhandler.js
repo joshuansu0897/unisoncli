@@ -5,7 +5,7 @@ function errorHandler(msg) {
 }
 
 function fatalErrorHandler(err) {
-  console.error(`${chalk.red('[fatal error]')} ${err.match}`)
+  console.error(`${chalk.red('[fatal error]')} ${err.message}`)
   console.error(err.stack)
   process.exit(1)
 }
