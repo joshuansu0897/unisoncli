@@ -1,4 +1,5 @@
 const configstore = require('configstore')
+const chalk = require('chalk')
 
 const Cryptr = require('cryptr');
 const pkg = require('../package.json')
@@ -18,7 +19,35 @@ function decrypt(text) {
   return cryptr.decrypt(text)
 }
 
+function calColor(num) {
+  while (num.length < 3) {
+    num = ` ${num}`
+  }
+
+  if (num >= 80) {
+    return chalk.green(num)
+  } else if (num >= 60) {
+    return chalk.keyword('darkorange')(num)
+  } else {
+    return chalk.keyword('red')(num)
+  }
+}
+
+function promedioColor(num) {
+  if (num >= 90) {
+    return `${chalk.keyword('yellowgreen')(num)} ${chalk.green('FREE')}`
+  } else if (num >= 85) {
+    return `${chalk.keyword('yellowgreen')(num)} ${chalk.green('75% Descuento')}`
+  } else if (num >= 80) {
+    return `${chalk.keyword('orange')(num)} ${chalk.green('50% Descuento')}`
+  } else {
+    return `${chalk.keyword('tomato')(num)} ${chalk.keyword('red')('Pagas Todo')}`
+  }
+}
+
 module.exports = {
   encrypt,
-  decrypt
+  decrypt,
+  promedioColor,
+  calColor
 }
