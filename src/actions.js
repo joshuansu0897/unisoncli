@@ -41,7 +41,7 @@ async function login(opts) {
     }
   }
 
-  apiuni.login(answers.email, answers.pass)
+  await apiuni.login(answers.email, answers.pass)
 
   await ciclo({ silent: true })
   await me({ silent: true })
