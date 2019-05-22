@@ -1,6 +1,6 @@
 {
   "name": "unisoncli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Cli para consutlar recursos de la Unison",
   "main": "unisoncli.js",
   "scripts": {
