@@ -28,7 +28,7 @@ Options:
 ```
 
 ```bash
-foo@bar:~$ unisoncli.js login
+foo@bar:~$ unisoncli login
 ? Correo electrónico institucional: a123456@unison.mx
 ? Contraseña: *******
 ```
@@ -44,7 +44,7 @@ Options:
 ```
 
 ```bash
-foo@bar:~$ ./unisoncli.js ciclo
+foo@bar:~$ unisoncli ciclo
 Id Ciclo: 232
 Ciclo: 2019-1
 Tipo: Normal
@@ -60,7 +60,7 @@ Options:
 ```
 
 ```bash
-foo@bar:~$ ./unisoncli.js calificaciones
+foo@bar:~$ unisoncli calificaciones
 Calificacion: 100 | Materia: DESARROLLO DE SISTEMAS III
 Calificacion: 100 | Materia: INGENIERÍA DE SOFTWARE
 Calificacion: 100 | Materia: SISTEMAS DE SOPORTE A LA TOMA DE DECISIONES
@@ -83,13 +83,13 @@ Options:
 ```
 
 ```
-foo@bar:~$ ./unisoncli.js me
+foo@bar:~$ unisoncli me
 JOSHUA NATHANAEL SAUCEDO URIARTE
 Carrera: INGENIERÍA EN SISTEMAS DE INFORMACIÓN
 ```
 
 ```
-foo@bar:~$ ./unisoncli.js me -v
+foo@bar:~$ unisoncli me -v
 JOSHUA NATHANAEL SAUCEDO URIARTE
 Carrera: INGENIERÍA EN SISTEMAS DE INFORMACIÓN
 Clave Carrera: ISI
