@@ -5,8 +5,10 @@ const chalk = require('chalk')
 const configstore = require('configstore')
 const validator = require('validator')
 
-const pkg = require('../package.json');
-const conf = new configstore(pkg.name);
+const apiuni = require('./apiuni')
+
+const pkg = require('../package.json')
+const conf = new configstore(pkg.name)
 
 async function login() {
   const answers = await inquirer.prompt([
@@ -25,6 +27,8 @@ async function login() {
   ])
 
   console.log(answers)
+  apiuni.login(answers.email, answers.pass)
+
   conf.set('email', answers.email)
   conf.set('pass', answers.pass)
 }
