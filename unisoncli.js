@@ -22,11 +22,14 @@ cli
 cli
   .command('ciclo')
   .description('Muestra la información del Ciclo Actual')
+  .option('-s, --silent', 'No muestra ningun output. Es para actualizar la información')
   .action(actions.ciclo)
 
 cli
   .command('me')
   .description('Muestra la información del Alumno')
+  .option('-v, --verbose', 'Muestra información más detallada')
+  .option('-s, --silent', 'No muestra ningun output. Es para actualizar la información')
   .action(actions.me)
 
 if (process.argv.length <= 2) {
