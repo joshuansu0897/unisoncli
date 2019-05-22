@@ -45,7 +45,7 @@ async function login(opts) {
 }
 
 async function calificaciones(ciclo) {
-  console.log(ciclo)
+  console.log('aun no funciona.')
 }
 
 async function ciclo() {
