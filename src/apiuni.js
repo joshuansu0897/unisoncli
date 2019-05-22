@@ -14,6 +14,7 @@ const LOGIN_URL = 'https://buhos.uson.mx/web/apps/portalAlumnos/index.php/auth/l
 const GRADES_URL = 'https://buhos.uson.mx/portalalumnos/obtener/calificacionesFinalesEstudiante'
 const INFO_URL = 'https://buhos.uson.mx/web/apps/portalAlumnos/index.php/auth/sesion/datos_alumno'
 const CYCLE_URL = 'https://buhos.uson.mx/web/apps/portalAlumnos/index.php/horario/ciclosActivos'
+const KARDEX_URL = 'https://buhos.uson.mx/portalalumnos/obtener/kardex'
 
 async function login(email, pass) {
   const form = new FormData()
@@ -96,7 +97,7 @@ async function ciclo(opts) {
 }
 
 async function me(opts) {
-  const cookie  = opts.cookie
+  const cookie = opts.cookie
   let res
   try {
     res = await fetch(INFO_URL, {
@@ -126,6 +127,11 @@ async function me(opts) {
   conf.set('expediente', res.expediente)
   conf.set('ide', res.niveles[0].ide)
 
+  // nada mas sirve a nivel licenciatura
+  conf.set('nv', res.niveles[0].nv)
+  conf.set('nivel', res.niveles[0].nv.split('-').shift())
+  conf.set('enc', res.niveles[0].h3)
+
   if (opts.silent) {
     return
   }
@@ -141,6 +147,8 @@ async function me(opts) {
     console.log(`Correo: ${chalk.yellow(res.correo)}`)
     console.log(`Promedio General: ${chalk.green(Number(res.niveles[0].pk).toFixed(2))}`)
   }
+
+  console.log(res)
 }
 
 async function calificaciones(opts) {
@@ -181,9 +189,53 @@ async function calificaciones(opts) {
   }
 }
 
+
+async function kardex(opts) {
+  const cookie = opts.cookie
+
+  const form = new FormData()
+  form.append('expediente', opts.expediente)
+  form.append('enc', opts.enc)
+  form.append('nivel', opts.nivel)
+
+  let res
+  try {
+    res = await fetch(KARDEX_URL, {
+      method: 'POST',
+      body: form,
+      headers: {
+        cookie
+      }
+    })
+  } catch (err) {
+    handler.fatalErrorHandler(err)
+  }
+
+  try {
+    res = await res.json()
+  } catch (err) {
+    handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
+    return
+  }
+
+  if (!res.success) {
+    handler.errorHandler(`Huvo un error: ${res.errors.reason}`)
+    return
+  }
+
+  res = res.data
+  console.log(`${chalk.green(res.nombre)}`)
+  console.log(`${chalk.green(res.programa)} | plan: ${chalk.green(res.plan)}`)
+  console.log(`Ingles ${chalk.green(res.ac_ingles_est)} ${chalk.green(res.ac_ingles_niv)}`)
+  console.log(`Ciclo Anteriro ${chalk.green(res.promedio_ciclo_desc)} promedio ${chalk.green(res.promedio_ciclo_val)}`)
+  console.log(`Kardex ${chalk.green(res.promedio_kardex)}`)
+  console.log(`Creditos Pasante ${chalk.green(res.cred_pas)} llevas ${chalk.green(res.cred_apro)} faltan ${chalk.green(Number(res.cred_pas) - Number(res.cred_apro))}`)
+}
+
 module.exports = {
   login,
   ciclo,
   me,
-  calificaciones
+  calificaciones,
+  kardex
 }

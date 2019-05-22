@@ -1,6 +1,6 @@
 {
   "name": "unisoncli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cli para consutlar datos de la Unison (Universidad de Sonora), calificaciones, ciclos escolares, kardex, etc...",
   "main": "unisoncli.js",
   "scripts": {

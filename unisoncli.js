@@ -26,6 +26,12 @@ cli
   .action(actions.ciclo)
 
 cli
+  .command('kardex')
+  .description('Muestra el kardex del Alumno')
+  .option('-v, --verbose', 'Muestra información más detallada')
+  .action(actions.kardex)
+
+cli
   .command('me')
   .description('Muestra la información del Alumno')
   .option('-v, --verbose', 'Muestra información más detallada')

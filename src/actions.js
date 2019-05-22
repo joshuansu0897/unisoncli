@@ -72,6 +72,17 @@ async function me(opts) {
   await apiuni.me(opts)
 }
 
+async function kardex(opts) {
+  if (opts === undefined) {
+    opts = {}
+  }
+  opts.cookie = conf.get('cookie')
+  opts.expediente = conf.get('expediente')
+  opts.nivel = conf.get('nivel')
+  opts.enc = conf.get('enc')
+  await apiuni.kardex(opts)
+}
+
 function version() {
   return chalk.magenta(figlet.textSync('unsioncli v0.0.1'))
 }
@@ -81,5 +92,6 @@ module.exports = {
   calificaciones,
   version,
   ciclo,
-  me
+  me,
+  kardex
 }

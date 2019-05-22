@@ -84,6 +84,38 @@ Calificacion: 100 | Materia: SIMULACIÓN DE SISTEMAS
 Promedio: 100.00 FREE
 ```
 
+### kardex
+```
+Usage: kardex [options]
+
+Muestra el kardex del Alumno
+
+Options:
+  -v, --verbose  Muestra información más detallada
+  -h, --help     output usage information
+```
+
+```bash
+foo@bar:~$ unisoncli kardex
+SAUCEDO URIARTE JOSHUA NATHANAEL
+INGENIERÍA EN SISTEMAS DE INFORMACIÓN | plan: 2032
+Ingles ACREDITADO * de *
+Ciclo Anteriro 2018-2 promedio  **.**
+Kardex  **.**
+Creditos Pasante *** llevas *** faltan **
+```
+
+##### se sigue trabajando
+```bash
+foo@bar:~$ unisoncli kardex -v
+SAUCEDO URIARTE JOSHUA NATHANAEL
+INGENIERÍA EN SISTEMAS DE INFORMACIÓN | plan: 2032
+Ingles ACREDITADO * de *
+Ciclo Anteriro 2018-2 promedio  **.**
+Kardex  **.**
+Creditos Pasante *** llevas *** faltan **
+```
+
 ### me
 ```
 Usage: me [options]
