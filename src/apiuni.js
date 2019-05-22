@@ -36,7 +36,7 @@ async function login(email, pass) {
     const parts = entry.split(';')
     const cookiePart = parts[0]
     return cookiePart
-  }).join('')
+  }).join(';')
 
   try {
     res = await res.json()
@@ -59,7 +59,7 @@ async function ciclo() {
   let res
   try {
     res = await fetch(CYCLE_URL, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         cookie
       }
@@ -88,7 +88,7 @@ async function me() {
   let res
   try {
     res = await fetch(INFO_URL, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         cookie
       }
