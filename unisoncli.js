@@ -15,6 +15,7 @@ cli
 
 cli
   .command('calificaciones [ciclo]')
+  .alias('cal')
   .description('Muestra las calificaciones del ciclo')
   .action(actions.calificaciones)
 
@@ -27,11 +28,6 @@ cli
   .command('me')
   .description('Muestra la información del Alumno')
   .action(actions.me)
-
-cli
-  .command('cal [ciclo]')
-  .description('Alias para calificaciones')
-  .action(actions.calificaciones)
 
 if (process.argv.length <= 2) {
   process.argv.push('-h')
