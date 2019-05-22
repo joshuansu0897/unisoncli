@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict'
 const commander = require('commander')
 const actions = require('./src/actions')
@@ -14,17 +15,26 @@ cli
 
 cli
   .command('calificaciones [ciclo]')
-  .description('Muestra la calidicacion del ciclo')
+  .description('Muestra las calificaciones del ciclo')
   .action(actions.calificaciones)
+
+cli
+  .command('ciclo')
+  .description('Muestra la información del Ciclo Actual')
+  .action(actions.ciclo)
+
+cli
+  .command('me')
+  .description('Muestra la información del Alumno')
+  .action(actions.me)
 
 cli
   .command('cal [ciclo]')
   .description('Alias para calificaciones')
   .action(actions.calificaciones)
 
-cli
-  .command('test')
-  .description('ciclo test')
-  .action(actions.ciclo)
+if (process.argv.length <= 2) {
+  process.argv.push('-h')
+}
 
 cli.parse(process.argv)

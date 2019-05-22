@@ -52,6 +52,10 @@ async function ciclo() {
   await apiuni.ciclo()
 }
 
+async function me() {
+  await apiuni.me()
+}
+
 function version() {
   return chalk.magenta(figlet.textSync('unsioncli v0.0.1'))
 }
@@ -60,5 +64,6 @@ module.exports = {
   login,
   calificaciones,
   version,
-  ciclo
+  ciclo,
+  me
 }

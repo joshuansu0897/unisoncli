@@ -2,12 +2,12 @@
   "name": "unisoncli",
   "version": "1.0.0",
   "description": "Cli para consutlar recursos de la Unison",
-  "main": "index.js",
+  "main": "unisoncli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "unisoncli": "./index.js"
+    "unisoncli": "./unisoncli.js"
   },
   "repository": {
     "type": "git",

@@ -33,10 +33,10 @@ async function login(email, pass) {
   const rawCookie = res.headers.raw()['set-cookie']
 
   const cookie = rawCookie.map((entry) => {
-    const parts = entry.split(';');
-    const cookiePart = parts[0];
-    return cookiePart;
-  }).join(';');
+    const parts = entry.split(';')
+    const cookiePart = parts[0]
+    return cookiePart
+  }).join('')
 
   try {
     res = await res.json()
@@ -56,7 +56,7 @@ async function login(email, pass) {
 
 async function ciclo() {
   const cookie = conf.get('cookie')
-  let res;
+  let res
   try {
     res = await fetch(CYCLE_URL, {
       method: 'POST',
@@ -83,7 +83,39 @@ async function ciclo() {
   console.log(`Tipo: ${chalk.magenta(res.tipoCurso === 'N' ? 'Normal' : 'Verano')}`)
 }
 
+async function me() {
+  const cookie = conf.get('cookie')
+  let res
+  try {
+    res = await fetch(INFO_URL, {
+      method: 'POST',
+      headers: {
+        cookie
+      }
+    })
+
+    res = await res.json()
+  } catch (err) {
+    handler.fatalErrorHandler(err)
+  }
+
+  if (!res.success) {
+    handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
+    return
+  }
+
+  res = res.data
+
+  console.log(res)
+
+  for (let i = 0; i < res.niveles.length; i++) {
+    const nivel = res.niveles[i];
+    console.log(nivel)
+  }
+}
+
 module.exports = {
   login,
-  ciclo
+  ciclo,
+  me
 }
