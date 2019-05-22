@@ -45,6 +45,7 @@ async function login(email, pass) {
   }
 
   if (!res.success) {
+    console.log(res)
     handler.errorHandler('No se pudo iniciar sesión. Correo y/o Contraseña incorrecta.')
     return
   }
@@ -54,8 +55,8 @@ async function login(email, pass) {
   conf.set('pass', util.encrypt(pass))
 }
 
-async function ciclo() {
-  const cookie = conf.get('cookie')
+async function ciclo(opts) {
+  const cookie = opts.cookie
   let res
   try {
     res = await fetch(CYCLE_URL, {
@@ -64,27 +65,38 @@ async function ciclo() {
         cookie
       }
     })
-
-    res = await res.json()
   } catch (err) {
     handler.fatalErrorHandler(err)
   }
 
-  if (!res.success) {
+  try {
+    res = await res.json()
+  } catch (err) {
     handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
     return
   }
 
+  if (!res.success) {
+    handler.errorHandler(`Huvo un error: ${res.errors.reason}`)
+    return
+  }
+
   res = res.data[0]
+
   conf.set('ciclo', res.descripcion)
   conf.set('idCiclo', res.id_ciclo)
+
+  if (opts.silent) {
+    return
+  }
+
   console.log(`Id Ciclo: ${chalk.magenta(res.id_ciclo)}`)
   console.log(`Ciclo: ${chalk.magenta(res.descripcion)}`)
   console.log(`Tipo: ${chalk.magenta(res.tipoCurso === 'N' ? 'Normal' : 'Verano')}`)
 }
 
-async function me() {
-  const cookie = conf.get('cookie')
+async function me(opts) {
+  const cookie  = opts.cookie
   let res
   try {
     res = await fetch(INFO_URL, {
@@ -93,29 +105,85 @@ async function me() {
         cookie
       }
     })
+  } catch (err) {
+    handler.fatalErrorHandler(err)
+  }
+
+  try {
+    res = await res.json()
+  } catch (err) {
+    handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
+    return
+  }
+
+  if (!res.success) {
+    handler.errorHandler(`Huvo un error: ${res.errors.reason}`)
+    return
+  }
+
+  res = res.data
+
+  conf.set('expediente', res.expediente)
+  conf.set('ide', res.niveles[0].ide)
+
+  if (opts.silent) {
+    return
+  }
+
+  console.log(`${chalk.green(res.nombre)} ${chalk.green(res.apellidos)}`)
+  console.log(`Carrera: ${chalk.green(res.nombre_carrera)}`)
+  if (opts.verbose) {
+    console.log(`Clave Carrera: ${chalk.green(res.clave_carrera)}`)
+    console.log(`Alumno: ${chalk.green(res.tipo_alumno)}`)
+    console.log(`Estatus: ${chalk.green(res.estatus)}`)
+    console.log(`Campus: ${chalk.green(res.campus)}`)
+    console.log(`Expediente: ${chalk.yellow(res.expediente)}`)
+    console.log(`Correo: ${chalk.yellow(res.correo)}`)
+    console.log(`Promedio General: ${chalk.green(Number(res.niveles[0].pk).toFixed(2))}`)
+  }
+}
+
+async function calificaciones(opts) {
+  const { idCiclo, idEstudiante } = opts
+  let res
+  try {
+    res = await fetch(GRADES_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        idCiclo,
+        idEstudiante
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    })
 
     res = await res.json()
   } catch (err) {
     handler.fatalErrorHandler(err)
   }
 
-  if (!res.success) {
-    handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
-    return
+  let CalTotal = 0
+  let numMaterias = 0
+  for (let y = 0; y < res.data.length; y++) {
+    const element = res.data[y]
+
+    if (element.Cal !== '') {
+      CalTotal += Number(element.Cal)
+      numMaterias++
+    }
+
+    console.log(`Calificacion: ${util.calColor(element.Cal)} | Materia: ${chalk.magenta(element.DescMateria)}`)
   }
 
-  res = res.data
-
-  console.log(res)
-
-  for (let i = 0; i < res.niveles.length; i++) {
-    const nivel = res.niveles[i];
-    console.log(nivel)
+  if (CalTotal != 0 && numMaterias != 0) {
+    console.log(`${chalk.keyword('steelblue')('Promedio:')} ${util.promedioColor((CalTotal / numMaterias).toFixed(2))}`)
+  } else {
+    console.log(`${chalk.keyword('steelblue')('No Tienes Calificaiones')}`)
   }
 }
 
 module.exports = {
   login,
   ciclo,
-  me
+  me,
+  calificaciones
 }
