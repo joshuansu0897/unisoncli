@@ -9,9 +9,10 @@ const pkg = require('../package.json')
 const conf = new configstore(pkg.name)
 
 const apiuni = require('./apiuni')
+const util = require('./utils')
+const handler = require('./errorhandler')
 
 async function login(opts) {
-
   let answers
   if (!opts.reLogin) {
     answers = await inquirer.prompt([
@@ -29,13 +30,17 @@ async function login(opts) {
       }
     ])
   } else {
-    answers = {
-      email: conf.get('email'),
-      pass: conf.get('pass')
+    try {
+      answers = {
+        email: util.decrypt(conf.get('email')),
+        pass: util.decrypt(conf.get('pass'))
+      }
+    } catch (err) {
+      handler.errorHandler('No hay Correo y/o Contraseña. Intente con \'unisoncli login\'')
+      return
     }
   }
 
-  console.log(answers)
   apiuni.login(answers.email, answers.pass)
 }
 

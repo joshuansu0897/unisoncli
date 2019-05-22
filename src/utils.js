@@ -8,7 +8,7 @@ if (!conf.has('scr')) {
   conf.set('scr', require('crypto').randomBytes(256).toString('hex'))
 }
 
-const cryptr = new Cryptr(conf.set('scr'));
+const cryptr = new Cryptr(conf.get('scr'));
 
 function encrypt(text) {
   return cryptr.encrypt(text)

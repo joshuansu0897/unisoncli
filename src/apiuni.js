@@ -2,8 +2,10 @@
 const fetch = require('node-fetch')
 const FormData = require('form-data')
 const configstore = require('configstore')
-const handler = require('./errorhandler')
 const chalk = require('chalk')
+
+const handler = require('./errorhandler')
+const util = require('./utils')
 
 const pkg = require('../package.json')
 const conf = new configstore(pkg.name)
@@ -48,6 +50,8 @@ async function login(email, pass) {
   }
 
   conf.set('cookie', cookie)
+  conf.set('email', util.encrypt(email))
+  conf.set('pass', util.encrypt(pass))
 }
 
 async function ciclo() {
@@ -72,6 +76,8 @@ async function ciclo() {
   }
 
   res = res.data[0]
+  conf.set('ciclo', res.descripcion)
+  conf.set('idCiclo', res.id_ciclo)
   console.log(`Id Ciclo: ${chalk.magenta(res.id_ciclo)}`)
   console.log(`Ciclo: ${chalk.magenta(res.descripcion)}`)
   console.log(`Tipo: ${chalk.magenta(res.tipoCurso === 'N' ? 'Normal' : 'Verano')}`)
