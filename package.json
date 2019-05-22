@@ -1,7 +1,7 @@
 {
   "name": "unisoncli",
   "version": "0.0.1",
-  "description": "Cli para consutlar recursos de la Unison",
+  "description": "Cli para consutlar datos de la Unison (Universidad de Sonora), calificaciones, ciclos escolares, kardex, etc...",
   "main": "unisoncli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +15,10 @@
   },
   "keywords": [
     "cli",
-    "unison"
+    "unison",
+    "universidad",
+    "universidad de sonora",
+    "sonora"
   ],
   "author": "joshua saucedo",
   "license": "MIT",

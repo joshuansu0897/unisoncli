@@ -1,5 +1,5 @@
 # unisoncli
-Cli para consutlar recursos de la Unison
+Cli para consutlar datos de la Unison (Universidad de Sonora), calificaciones, ciclos escolares, kardex, etc...
 
 ## instalacion 
 ### npm
