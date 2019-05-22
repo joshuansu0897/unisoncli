@@ -42,18 +42,34 @@ async function login(opts) {
   }
 
   apiuni.login(answers.email, answers.pass)
+
+  await ciclo({ silent: true })
+  await me({ silent: true })
 }
 
-async function calificaciones(ciclo) {
-  console.log('aun no funciona.')
+async function calificaciones(opts) {
+  if (opts === undefined) {
+    opts = {}
+  }
+  opts.idCiclo = conf.get('idCiclo')
+  opts.idEstudiante = conf.get('ide')
+  await apiuni.calificaciones(opts)
 }
 
-async function ciclo() {
-  await apiuni.ciclo()
+async function ciclo(opts) {
+  if (opts === undefined) {
+    opts = {}
+  }
+  opts.cookie = conf.get('cookie')
+  await apiuni.ciclo(opts)
 }
 
-async function me() {
-  await apiuni.me()
+async function me(opts) {
+  if (opts === undefined) {
+    opts = {}
+  }
+  opts.cookie = conf.get('cookie')
+  await apiuni.me(opts)
 }
 
 function version() {
