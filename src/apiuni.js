@@ -3,6 +3,7 @@ const fetch = require('node-fetch')
 const FormData = require('form-data')
 const configstore = require('configstore')
 const handler = require('./errorhandler')
+const chalk = require('chalk')
 
 const pkg = require('../package.json')
 const conf = new configstore(pkg.name)
@@ -50,19 +51,30 @@ async function login(email, pass) {
 }
 
 async function ciclo() {
-  const cookie = conf.get('cookie', cookie)
-  let res2;
+  const cookie = conf.get('cookie')
+  let res;
   try {
-    res2 = await fetch(CYCLE_URL, { method: 'POST' })
+    res = await fetch(CYCLE_URL, {
+      method: 'POST',
+      headers: {
+        cookie
+      }
+    })
 
-    res2 = await res2.text()
+    res = await res.json()
   } catch (err) {
-    console.error(`[error] ${err.message}`)
-    console.error(err.stack)
+    handler.fatalErrorHandler(err)
   }
 
-  console.log('----------- res2 json ----------')
-  console.log(res2)
+  if (!res.success) {
+    handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
+    return
+  }
+
+  res = res.data[0]
+  console.log(`Id Ciclo: ${chalk.magenta(res.id_ciclo)}`)
+  console.log(`Ciclo: ${chalk.magenta(res.descripcion)}`)
+  console.log(`Tipo: ${chalk.magenta(res.tipoCurso === 'N' ? 'Normal' : 'Verano')}`)
 }
 
 module.exports = {
