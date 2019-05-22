@@ -84,7 +84,7 @@ async function kardex(opts) {
 }
 
 function version() {
-  return chalk.magenta(figlet.textSync('unsioncli v0.0.1'))
+  return chalk.magenta(figlet.textSync('unsioncli v0.0.4'))
 }
 
 module.exports = {
