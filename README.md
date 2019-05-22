@@ -1,6 +1,20 @@
 # unisoncli
 Cli para consutlar recursos de la Unison
 
+## instalacion 
+### npm
+```
+npm install -g unisoncli
+```
+
+### desde source code
+clona este repositorio y en la razi corre
+```
+npm install
+npm install -g
+```
+listo ya podras utilizar ```unisoncli```
+
 ## Uso
 ```
 Usage: unisoncli [options] [command]
