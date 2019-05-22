@@ -5,7 +5,7 @@ const actions = require('./src/actions')
 
 const cli = new commander.Command()
 
-cli.version(actions.version)
+cli.version(actions.version())
 
 cli
   .command('login')

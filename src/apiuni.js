@@ -147,8 +147,6 @@ async function me(opts) {
     console.log(`Correo: ${chalk.yellow(res.correo)}`)
     console.log(`Promedio General: ${chalk.green(Number(res.niveles[0].pk).toFixed(2))}`)
   }
-
-  console.log(res)
 }
 
 async function calificaciones(opts) {
