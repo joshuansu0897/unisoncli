@@ -126,7 +126,7 @@ INSCRITAS
  | 8        | 9979  | INTELIGENCIA ARTIFICIAL             | NaN | 2019-1 | 1   | 0     | 0   |
 SAUCEDO URIARTE JOSHUA NATHANAEL
 INGENIERÍA EN SISTEMAS DE INFORMACIÓN | plan: 2032
-Ingles ACREDITADO 4 de 4
+Ingles ACREDITADO * de *
 Ciclo Anteriro 2018-2 promedio  **.**
 Kardex  **.**
 Creditos Pasante *** llevas *** faltan **
