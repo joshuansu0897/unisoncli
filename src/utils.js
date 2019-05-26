@@ -20,6 +20,8 @@ function decrypt(text) {
 }
 
 function calColor(num) {
+  num = parseInt(num, 10)
+  num = `${num}`
   while (num.length < 3) {
     num = ` ${num}`
   }
@@ -45,9 +47,23 @@ function promedioColor(num) {
   }
 }
 
+function strSize(str, num) {
+  while (str.length < num) {
+    str = `${str} `
+  }
+
+  if (str.length > num) {
+    str = str.slice(0, (num - 3))
+    str = `${str}...`
+  }
+
+  return str
+}
+
 module.exports = {
   encrypt,
   decrypt,
   promedioColor,
-  calColor
+  calColor,
+  strSize
 }
