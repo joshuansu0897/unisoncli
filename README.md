@@ -105,12 +105,28 @@ Kardex  **.**
 Creditos Pasante *** llevas *** faltan **
 ```
 
-##### se sigue trabajando
 ```bash
 foo@bar:~$ unisoncli kardex -v
+MATERIAS OBLIGATORIAS
+ | 8        | 6916  | PLANEACIÓN ESTRATÉGICA INFORMÁTICA  | *** | 2018-2 | 1   | 0     | 0   |
+ | 6        | 7977  | COSTOS EN INGENIERÍA                | *** | 2018-2 | 1   | 0     | 0   |
+ | 7        | 7990  | INVESTIGACIÓN DE OPERACIONES I      | *** | 2018-2 | 1   | 0     | 0   |
+ | 7        | 6918  | INGENIERÍA DE SOFTWARE              | *** | 2019-1 | 1   | 0     | 0   |
+MATERIAS OPTATIVAS
+ | Créditos | Clave | Materia                             | Cal | Ciclo  | Ins | Bajas | Rep |
+ | 8        | 6924  | DISEÑO DE INTERFACES DE USUARIO     | *** | 2018-1 | 1   | 0     | 0   |
+ | 8        | 9987  | SERVIDORES                          | *** | 2018-2 | 1   | 0     | 0   |
+ | 8        | 6925  | SISTEMAS DE INFORMACIÓN BASADOS ... | *** | 2019-1 | 1   | 0     | 0   |
+INSCRITAS
+ | Créditos | Clave | Materia                             | Cal | Ciclo  | Ins | Bajas | Rep |
+ | 8        | 6934  | TÓPICOS AVANZADOS DE PROGRAMACIÓN   | NaN | 2018-2 | 1   | 0     | 0   |
+ | 8        | 6921  | SISTEMAS DE SOPORTE A LA TOMA DE... | NaN | 2019-1 | 1   | 0     | 0   |
+ | 8        | 6922  | SOLUCIONES INTEGRALES EN LAS EMP... | NaN | 2019-1 | 1   | 0     | 0   |
+ | 7        | 8001  | SIMULACIÓN DE SISTEMAS              | NaN | 2019-1 | 1   | 0     | 0   |
+ | 8        | 9979  | INTELIGENCIA ARTIFICIAL             | NaN | 2019-1 | 1   | 0     | 0   |
 SAUCEDO URIARTE JOSHUA NATHANAEL
 INGENIERÍA EN SISTEMAS DE INFORMACIÓN | plan: 2032
-Ingles ACREDITADO * de *
+Ingles ACREDITADO 4 de 4
 Ciclo Anteriro 2018-2 promedio  **.**
 Kardex  **.**
 Creditos Pasante *** llevas *** faltan **

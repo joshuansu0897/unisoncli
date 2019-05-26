@@ -224,17 +224,19 @@ async function kardex(opts) {
 
   res = res.data
 
-  const materiasObl = res.materias.filter(obj => obj.TITLE.match(/MATERIAS OBLIGATORIAS/))
-  console.log('MATERIAS OBLIGATORIAS')
-  printMateriasKardex(materiasObl)
+  if (opts.verbose) {
+    const materiasObl = res.materias.filter(obj => obj.TITLE.match(/MATERIAS OBLIGATORIAS/))
+    console.log('MATERIAS OBLIGATORIAS')
+    printMateriasKardex(materiasObl)
 
-  const materiasOpt = res.materias.filter(obj => obj.TITLE.match(/MATERIAS OPTATIVAS/))
-  console.log('MATERIAS OPTATIVAS')
-  printMateriasKardex(materiasOpt)
+    const materiasOpt = res.materias.filter(obj => obj.TITLE.match(/MATERIAS OPTATIVAS/))
+    console.log('MATERIAS OPTATIVAS')
+    printMateriasKardex(materiasOpt)
 
-  const materiasIns = res.materias.filter(obj => obj.TITLE.match(/INSCRIPCION/))
-  console.log('INSCRITAS')
-  printMateriasKardex(materiasIns)
+    const materiasIns = res.materias.filter(obj => obj.TITLE.match(/INSCRIPCION/))
+    console.log('INSCRITAS')
+    printMateriasKardex(materiasIns)
+  }
 
   console.log(`${chalk.green(res.nombre)}`)
   console.log(`${chalk.green(res.programa)} | plan: ${chalk.green(res.plan)}`)
