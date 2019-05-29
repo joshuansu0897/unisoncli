@@ -78,7 +78,7 @@ async function ciclo(opts) {
   }
 
   if (!res.success) {
-    handler.errorHandler(`Huvo un error: ${res.errors.reason}`)
+    handler.errorHandler(`Hubo un error: ${res.errors.reason}`)
     return
   }
 
@@ -118,7 +118,7 @@ async function me(opts) {
   }
 
   if (!res.success) {
-    handler.errorHandler(`Huvo un error: ${res.errors.reason}`)
+    handler.errorHandler(`Hubo un error: ${res.errors.reason}`)
     return
   }
 
@@ -217,7 +217,7 @@ async function kardex(opts) {
   }
 
   if (!res.success) {
-    handler.errorHandler(`Huvo un error: ${res.errors.reason}`)
+    handler.errorHandler(`Hubo un error: ${res.errors.reason}`)
     handler.errorHandler('Cookie obsoleta. necesitas correr el comando \'unisoncli login -r\' o \'unisoncli login\' si jamas has iniciado sesión')
     return
   }
