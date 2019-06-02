@@ -1,15 +1,15 @@
 const configstore = require('configstore')
 const chalk = require('chalk')
 
-const Cryptr = require('cryptr');
-const pkg = require('../package.json')
+const Cryptr = require('cryptr')
+const pkg = require('../../package.json')
 const conf = new configstore(pkg.name)
 
 if (!conf.has('scr')) {
   conf.set('scr', require('crypto').randomBytes(256).toString('hex'))
 }
 
-const cryptr = new Cryptr(conf.get('scr'));
+const cryptr = new Cryptr(conf.get('scr'))
 
 function encrypt(text) {
   return cryptr.encrypt(text)
