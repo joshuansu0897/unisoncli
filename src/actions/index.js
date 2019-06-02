@@ -1,3 +1,4 @@
+'use strict'
 const calificaciones = require('./calificaciones')
 const ciclo = require('./ciclo')
 const kardex = require('./kardex')
