@@ -21,7 +21,9 @@ function decrypt(text) {
 
 function calColor(num) {
   num = parseInt(num, 10)
-  num = `${num}`
+
+  num = isNaN(num) ? '' : `${num}`
+
   while (num.length < 3) {
     num = ` ${num}`
   }
