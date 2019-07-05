@@ -1,9 +1,10 @@
 'use strict'
 const figlet = require('figlet')
 const chalk = require('chalk')
+const pkg = require('../../package.json')
 
 function version() {
-  return chalk.magenta(figlet.textSync('unsioncli v0.0.5'))
+  return chalk.magenta(figlet.textSync(pkg.version))
 }
 
 module.exports = version
