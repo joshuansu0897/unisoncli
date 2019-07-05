@@ -27,7 +27,9 @@ Commands:
   login [options]             Iniciar sesión en el portal de Alumnos
   calificaciones|cal [ciclo]  Muestra las calificaciones del ciclo
   ciclo [options]             Muestra la información del Ciclo Actual
+  kardex [options]            Muestra el kardex del Alumno
   me [options]                Muestra la información del Alumno
+  horario                     Muestra el horario del Alumno
 ```
 
 ### login
@@ -163,7 +165,7 @@ Correo: a*********@unison.mx
 Promedio General: **.**
 ```
 
-### me
+### horario
 ```
 Usage: horario [options]
 
