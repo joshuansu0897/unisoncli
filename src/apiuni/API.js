@@ -4,5 +4,6 @@ module.exports = {
   GRADES_URL: 'https://buhos.uson.mx/portalalumnos/obtener/calificacionesFinalesEstudiante',
   INFO_URL: 'https://buhos.uson.mx/web/apps/portalAlumnos/index.php/auth/sesion/datos_alumno',
   CYCLE_URL: 'https://buhos.uson.mx/web/apps/portalAlumnos/index.php/horario/ciclosActivos',
-  KARDEX_URL: 'https://buhos.uson.mx/portalalumnos/obtener/kardex'
+  KARDEX_URL: 'https://buhos.uson.mx/portalalumnos/obtener/kardex',
+  HORARIO_URL: 'https://buhos.uson.mx/web/apps/portalAlumnos/index.php/horario/get_horario_sql'
 }

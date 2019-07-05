@@ -38,7 +38,8 @@ async function ciclo(opts) {
 
   res = res.data[0]
 
-  conf.set('ciclo', res.descripcion)
+  conf.set('ciclo', res.ciclo)
+  conf.set('cicloDescripcion', res.descripcion)
   conf.set('idCiclo', res.id_ciclo)
 
   if (opts.silent) {

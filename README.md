@@ -162,3 +162,25 @@ Expediente: *********
 Correo: a*********@unison.mx
 Promedio General: **.**
 ```
+
+### me
+```
+Usage: horario [options]
+
+Muestra el horario del Alumno
+
+Options:
+  -h, --help  output usage information
+```
+
+```
+foo@bar:~$ unisoncli horario
+ | Materia                   | Aula     | LUN         | MAR         | MIE         | JUE         | VIE         | SAB         |
+ | INGENIERÍA DE SOFTWARE    | 5J-A305  | 1200 - 1300 | 1200 - 1300 | 1200 - 1300 | 1200 - 1300 |             |             |
+ | SOLUCIONES INTEGRALES ... | 5K-A204  | 1400 - 1500 | 1400 - 1500 | 1400 - 1500 | 1400 - 1500 |             |             |
+ | SISTEMAS DE SOPORTE A ... | 5K-A204  | 1500 - 1600 | 1500 - 1600 | 1500 - 1600 | 1500 - 1600 |             |             |
+ | AJEDREZ                   | 7B-S201  | 1600 - 1700 | 1600 - 1700 |             | 1600 - 1700 |             |             |
+ | SIMULACIÓN DE SISTEMAS    | 5O-CO101 | 1800 - 1900 | 1800 - 1900 | 1800 - 1900 | 1800 - 1900 |             |             |
+ | SISTEMAS DE INFORMACIÓ... | 5G-L205  | 1900 - 2000 | 1900 - 2000 | 1900 - 2000 | 1900 - 2000 |             |             |
+ | TÓPICOS AVANZADOS DE P... | 5J-CO203 | 2000 - 2100 | 2000 - 2100 | 2000 - 2100 | 2000 - 2100 | 2000 - 2100 |             |
+```

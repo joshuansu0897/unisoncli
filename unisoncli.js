@@ -38,6 +38,11 @@ cli
   .option('-s, --silent', 'No muestra ningun output. Es para actualizar la información')
   .action(src.actions.me)
 
+cli
+  .command('horario')
+  .description('Muestra el horario del Alumno')
+  .action(src.actions.horario)
+
 if (process.argv.length <= 2) {
   process.argv.push('-h')
 }
