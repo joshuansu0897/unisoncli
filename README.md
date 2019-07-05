@@ -146,13 +146,13 @@ Options:
   -h, --help     output usage information
 ```
 
-```
+```bash
 foo@bar:~$ unisoncli me
 JOSHUA NATHANAEL SAUCEDO URIARTE
 Carrera: INGENIERÍA EN SISTEMAS DE INFORMACIÓN
 ```
 
-```
+```bash
 foo@bar:~$ unisoncli me -v
 JOSHUA NATHANAEL SAUCEDO URIARTE
 Carrera: INGENIERÍA EN SISTEMAS DE INFORMACIÓN
@@ -175,7 +175,7 @@ Options:
   -h, --help  output usage information
 ```
 
-```
+```bash
 foo@bar:~$ unisoncli horario
  | Materia                   | Aula     | LUN         | MAR         | MIE         | JUE         | VIE         | SAB         |
  | INGENIERÍA DE SOFTWARE    | 5J-A305  | 1200 - 1300 | 1200 - 1300 | 1200 - 1300 | 1200 - 1300 |             |             |
