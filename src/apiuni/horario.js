@@ -55,12 +55,13 @@ async function horario(opts) {
 
   for (const [_, idSort] of sortArray.entries()) {
     const materia = res[idSort]
-    const horarios = materia.HorarioJSON
-    printHorario(materia, horarios)
+    printHorario(materia)
   }
 }
 
-function printHorario(materia, horarios) {
+function printHorario(materia) {
+  const horarios = materia.HorarioJSON
+  
   let str = ` | ${util.strSize(materia.DescMateria, materiaSize)} | ${chalk.green(util.strSize(materia.EspacioFisico, aulaSize))} |`
 
   let dia = 2 // en el sistema de la unison, el dia 'Lunes' es el dia numero 2
