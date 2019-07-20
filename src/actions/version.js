@@ -4,7 +4,7 @@ const chalk = require('chalk')
 const pkg = require('../../package.json')
 
 function version() {
-  return chalk.magenta(figlet.textSync(pkg.version))
+  return chalk.magenta(figlet.textSync(`unisoncli ${pkg.version}`))
 }
 
 module.exports = version
