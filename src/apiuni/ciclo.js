@@ -36,7 +36,7 @@ async function ciclo(opts) {
     return
   }
 
-  res = res.data[0]
+  res = res.data.pop()
 
   conf.set('ciclo', res.ciclo)
   conf.set('cicloDescripcion', res.descripcion)
