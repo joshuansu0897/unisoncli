@@ -46,6 +46,10 @@ async function horario(opts) {
   let sortArray = new Map()
   for (let i = 0; i < res.length; i++) {
     const materia = res[i];
+    if (materia.HorarioJSON === undefined) {
+      sortArray.set(2400, i)
+      continue;
+    }
     sortArray.set(materia.HorarioJSON[0].inicio, i)
   }
 
@@ -61,8 +65,13 @@ async function horario(opts) {
 
 function printHorario(materia) {
   const horarios = materia.HorarioJSON
-  
+
   let str = ` | ${util.strSize(materia.DescMateria, materiaSize)} | ${chalk.green(util.strSize(materia.EspacioFisico, aulaSize))} |`
+
+  if (horarios === undefined) {
+    console.log(str)
+    return
+  }
 
   let dia = 2 // en el sistema de la unison, el dia 'Lunes' es el dia numero 2
   for (let i = 0; i < 6; i++) {
